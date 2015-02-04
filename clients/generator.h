@@ -28,6 +28,7 @@ struct pairs_st {
 extern "C" {
 #endif
 
+void get_random_string(char *buffer, size_t size);
 pairs_st *pairs_generate(uint64_t number_of, size_t value_length);
 void pairs_free(pairs_st *pairs);
 

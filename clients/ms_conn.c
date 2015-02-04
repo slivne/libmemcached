@@ -32,6 +32,7 @@
 #include "ms_setting.h"
 #include "ms_thread.h"
 #include "ms_atomic.h"
+#include "generator.h"
 
 #ifdef linux
 /* /usr/include/netinet/in.h defines macros from ntohs() to _bswap_nn to
@@ -177,6 +178,7 @@ uint64_t ms_get_key_prefix(void)
   pthread_mutex_lock(&ms_global.seq_mutex);
   key_prefix_seq|= KEY_PREFIX_MASK;
   key_prefix= key_prefix_seq;
+  get_random_string((char *)&key_prefix,8);
   key_prefix_seq++;
   pthread_mutex_unlock(&ms_global.seq_mutex);
 
